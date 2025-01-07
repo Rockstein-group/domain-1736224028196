@@ -1,0 +1,73 @@
+---
+import Seo from "../components/Seo.astro";
+import { Image } from "astro:assets";
+import imgimages_dd_logo_webp from "../../public/images/dd_logo.webp";
+import imgimages_gii_solution_img_5_1_webp from "../../public/images/gii_solution_img_5_1.webp";
+import imgimages_gii_solution_img_5_2_webp from "../../public/images/gii_solution_img_5_2.webp";
+import imgimages_gii_solution_img_5_3_webp from "../../public/images/gii_solution_img_5_3.webp";
+import imgimages_gii_solution_img_5_4_webp from "../../public/images/gii_solution_img_5_4.webp";
+import '../styles/global.css';
+---
+
+<html lang="en">
+	<head>
+		
+        <script>
+        import { showToast } from "../components/toast";
+        (() => {
+          const els = [...document.querySelectorAll('form')];
+          if (!els?.length) return;
+          els.forEach(el => {
+            console.log("Test 1")
+            el.addEventListener('submit', async (e) => {
+              console.log("Test 2")
+              e.preventDefault();
+              const formData = new FormData(e.target);
+              const formObject = Object.fromEntries(formData);
+              formObject.emailUser = "quangnhat249@gmail.com";
+              console.log("formObject",formObject)
+              console.log("Test 3")
+              try {
+                console.log("Test 4")
+                const response = await fetch('http://localhost:3001/api/send-mail-contact', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify(formObject)
+                });
+                console.log("Test 5")
+                if (!response.ok) {
+                  throw new Error('Network response was not ok');
+                }
+                console.log("Test 6")
+                const result = await response.json();
+                showToast('Form submitted successfully!');
+                console.log('Form submitted successfully:', result);
+              } catch (error) {
+                console.error('Error submitting form:', error);
+                showToast('Error submitting form', 'error');
+              }
+            });
+          });
+        })();
+      </script>
+        <Seo seo={{ title: "EcoBuilder", description: "Page description", keywords: "", canonical: "", image: '', type: "website", themeColor: "#ffffff"}} />
+		<meta charset="utf-8" />
+		<link
+			rel="icon"
+			type="image/svg+xml"
+			href="/favicon.svg"
+		/>
+		<meta
+			name="viewport"
+			content="width=device-width"
+		/>
+		<meta
+			name="generator"
+			content={Astro.generator}
+		/>
+		<title>Astro</title>
+	</head>
+	<body> <header class="flex flex-col relative shrink-0 box-border h-auto empty:min-h-[30vh] before:content-[&#x27;Header&#x27;] before:absolute before:top-0 before:left-0 before:inline-block before:py-1 before:px-2 before:bg-black/20 before:text-white before:text-sm before:rounded before:!rounded-tl-none before:!rounded-bl-none mb-[1px] header-section"><div class="header-component bg-[#F6F8F6]" aria-label="Header Desti&#x27;Durable Section"><div class="max-md:max-w-full px-4 py-4"><div class="mx-auto container 2xl:max-w-[1440px]"><div class="flex items-center justify-between w-full" aria-label="Header content container"><div aria-label="Logo Container"><a href="#" class="flex items-center space-x-2" aria-label="Go to homepage"><div class="relative" aria-label="Logo image container"><Image alt="Gaiact Company Logo" src={imgimages_dd_logo_webp} width="115" height="60" class="w-[115px] h-[60px] object-cover max-w-full " loading="lazy" aria-label="Desti&#x27;Durable Logo" /></div></a></div><div aria-label="Contact button container"><button width="auto" height="auto" class="rounded-full flex items-center justify-center bg-[#FFB84C] px-12 h-11 text-[#252525] hover:bg-[#ffa01c]" aria-label="Button for more info on Hero Desti Durable">Contactez-nous</button></div></div></div></div></div></header><main class="flex flex-col relative shrink-0 box-border h-auto empty:min-h-[30vh] before:content-[&#x27;Main&#x27;] before:absolute before:top-0 before:left-0 before:inline-block before:py-1 before:px-2 before:bg-black/20 before:text-white before:text-sm before:rounded before:!rounded-tl-none before:!rounded-bl-none mb-[1px] main-section"><section class="main-component flex flex-col bg-slate-800" aria-label="Step Five Section"><div class="px-4 sm:px-6 lg:px-8 max-md:px-5 max-md:max-w-full py-16" aria-label="Step Five Wrapper"><div class="max-w-screen-2xl mx-auto" aria-label="Step Five Container"><div class="flex flex-col" aria-label="Step Five Body"><div class="flex flex-wrap gap-2.5 justify-center items-center w-full" aria-label="Step Five Header"><h4 width="auto" height="auto" class="flex-shrink-0 self-stretch my-auto lg:text-7xl font-medium whitespace-nowrap lg:w-[72px] text-left text-4xl text-white" aria-level="4">5.</h4><div class="flex flex-col flex-1 self-stretch my-auto text-xl leading-7 text-white basis-0 max-md:max-w-full"><h4 width="auto" height="auto" class="self-stretch my-auto text-xl lg:text-3xl font-semibold leading-10 flex-1 w-full text-white" aria-level="4">Pilotez les évolutions !</h4><p width="auto" height="auto" class="text-white text-lg lg:text-xl leading-8 lg:leading-10 w-full" aria-label="Description of the step">Suivez, analysez et comprenez les indicateurs de performance grâce à un point mensuel réalisé par nos meilleurs experts.</p></div></div><div class="flex flex-col mt-10 text-lg lg:text-xl leading-10 text-white w-full" aria-label="Step Five Description"><p width="auto" height="auto" class="text-white text-lg lg:text-xl leading-8 lg:leading-10 w-full" aria-label="First description paragraph">Vous pourrez aller toujours plus loin dans la démarche, les résultats et la performance environnementale, économique et sociétale.</p><p width="auto" height="auto" class="text-white text-lg lg:text-xl leading-8 lg:leading-10 w-full" aria-label="Second description paragraph">Nos experts vous accompagnent dans la mise en œuvre de votre stratégie en vous offrant un accompagnement personnalisé.</p></div><div class="flex flex-wrap gap-0 justify-between lg:grid grid-cols-2 lg:grid-cols-4 lg:gap-6 mt-10 lg:min-h-[310px]" aria-label="Step Five Features Container"><div class="flex flex-col self-start mb-4 lg:mb-0 px-4 pt-4 pb-8 lg:pb-12 rounded-2xl bg-slate-700 w-[calc(50%_-_9px)] lg:min-h-[310px] lg:w-full lg:h-full" aria-label="Éthique"><Image alt="Feature image for Éthique" src={imgimages_gii_solution_img_5_1_webp} width="400" height="300" class="aspect-square w-[200px] mx-auto" cssResizer="mx-auto" loading="lazy" /><div class="mt-4"><p width="auto" height="auto" class="text-lg lg:text-xl font-semibold leading-snug text-center text-lime-400 w-full">Éthique</p></div></div><div class="flex flex-col self-start px-4 pt-4 pb-4 lg:pb-12 rounded-2xl bg-slate-700 w-[calc(50%_-_9px)] lg:min-h-[310px] lg:w-full lg:h-full" aria-label="Équitable"><Image alt="Feature image for Équitable" src={imgimages_gii_solution_img_5_2_webp} width="400" height="300" class="aspect-square w-[200px] mx-auto" cssResizer="mx-auto" loading="lazy" /><div class="mt-4 lg:mt-4"><p width="auto" height="auto" class="text-lg lg:text-xl font-semibold leading-snug text-center text-lime-400 w-full">Équitable</p></div></div><div class="flex flex-col self-start px-4 pt-4 pb-8 lg:pb-12 rounded-2xl bg-slate-700 w-[calc(50%_-_9px)] lg:min-h-[310px] lg:w-full lg:h-full" aria-label="Écologique"><Image alt="Feature image for Écologique" src={imgimages_gii_solution_img_5_3_webp} width="400" height="300" class="aspect-square w-[200px] mx-auto" cssResizer="mx-auto" loading="lazy" /><div class="mt-4"><p width="auto" height="auto" class="text-lg lg:text-xl font-semibold leading-snug text-center text-lime-400 w-full">Écologique</p></div></div><div class="flex flex-col self-start -mt-8 lg:mt-0 px-4 pt-4 pb-4 lg:pb-12 rounded-2xl bg-slate-700 w-[calc(50%_-_9px)] lg:min-h-[310px] lg:w-full lg:h-full" aria-label="Porteuse de valeurs responsables"><Image alt="Feature image for Porteuse de valeurs responsables" src={imgimages_gii_solution_img_5_4_webp} width="207px" height="363px" class="aspect-square w-[200px] mx-auto lg:w-[207px] lg:h-[363px]" cssResizer="mx-auto" loading="lazy" /><div class="mt-4"><p width="auto" height="auto" class="text-lg lg:text-xl font-semibold leading-snug text-center text-lime-400 w-full">Porteuse de valeurs responsables</p></div></div></div></div></div></div></section></main><footer class="flex flex-col relative shrink-0 box-border h-auto empty:min-h-[30vh] before:content-[&#x27;Footer&#x27;] before:absolute before:top-0 before:left-0 before:inline-block before:py-1 before:px-2 before:bg-black/20 before:text-white before:text-sm before:rounded before:!rounded-tl-none before:!rounded-bl-none mb-[1px] footer-section"><section class="bg-white" aria-label="Footer Desti Durable Section"><div aria-label="Footer Wrapper"><div class="p-4"><div class="mx-auto container 2xl:max-w-[1440px]"><div class="flex flex-col items-center justify-around gap-6 md:flex-row" aria-label="Footer Content"><div class="flex items-center gap-2" aria-label="Footer Logo"><Image alt="Desti&#x27;Durable Logo" src={imgimages_dd_logo_webp} width="196" height="100" class="w-auto h-auto" aria-label="Desti&#x27;Durable Logo Image" /></div><form class="flex w-auto lg:w-full max-w-xl gap-4" aria-label="Footer Email Form"><input type="email" placeholder="Adresse e-mail" class="flex-1 rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Email Input Field"/><button width="auto" height="auto" type="submit" class="flex items-center justify-center rounded-full bg-[#FFB84C] px-12 text-[#252525] transition-all hover:bg-[#ffa01c]" aria-label="Submit Button">Envoyer</button></form></div></div></div><p class="border-t border-[#bbb]" aria-label="Footer Copyright Text"></p><div class="mx-auto container 2xl:max-w-[1440px] flex flex-row justify-center"><p width="auto" height="auto" class="text-center text-sm text-[#252525] p-5" aria-label="Footer Copyright Text">© <!-- -->2025<!-- --> DESTI&#x27;DURABLE - Site web créé par la société GreenWeb. L&#x27;ensemble des données est stocké en France par Digital Forest, hébergeur éco-responsable.</p></div></div></section></footer> </body>
+</html>
